@@ -9,6 +9,8 @@ public class HttpServerHandler extends SimpleChannelInboundHandler<FullHttpReque
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, FullHttpRequest msg) {
+        System.out.println(msg.method());
+        System.out.println(msg.uri());
         System.out.println(msg.toString());
         ByteBuf content = Unpooled.copiedBuffer("Hello World!", CharsetUtil.UTF_8);
         FullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK, content);
